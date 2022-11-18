@@ -1,0 +1,100 @@
+% author Dinupa Nawarathne
+% email dinupa3@gmail.com
+% date 10-11-2022
+
+\documentclass[10pt, xcolor={dvipsnames}, aspectratio = 169, sans,mathserif]{beamer}
+
+%
+% packages
+%
+\usepackage{fontspec}
+\usepackage{fontawesome5}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[absolute,overlay]{textpos}
+\usepackage[font=tiny]{caption}
+
+
+%
+% customization
+%
+\mode<presentation>
+{
+\usefonttheme{serif}
+\setmainfont{Comic Sans MS}
+% custom colors
+\definecolor{nmsured}{RGB}{137,18,22}
+% custom fonts
+\setbeamercolor{title}{bg=White,fg=nmsured}
+\setbeamercolor{frametitle}{bg=White,fg=nmsured}
+\setbeamercolor{section number projected}{bg=nmsured,fg=White}
+\setbeamercolor{subsection number projected}{bg=nmsured,fg=White}
+\setbeamertemplate{items}{\color{nmsured}{\faAngleDoubleRight}}
+\setbeamertemplate{section in toc}[square]
+\setbeamertemplate{subsection in toc}[square]
+\setbeamertemplate{footline}[frame number]
+\setbeamertemplate{caption}[numbered]
+\setbeamerfont{footnote}{size=\tiny}
+\setbeamercovered{invisible}
+\usefonttheme{professionalfonts}
+% set background
+\setbeamertemplate{background}[grid][color=nmsured!15]
+}
+
+%
+% title, author, date
+%
+\title{Hodoscope \& NIM Handbook}
+
+\author{NMSU Nuclear Physics Group}
+
+\date{E1039/SpinQuest Experiment
+\\ \today}
+
+
+%
+% some custom commands
+%
+\newcommand{\leftpic}[2]
+{
+\begin{textblock}{7.0}(0.5, 1.5)
+\begin{figure}
+    \centering
+    \includegraphics[width=7.0cm]{../imgs/#1.png}
+    \caption{#2}
+\end{figure}
+\end{textblock}
+}
+
+\newcommand{\rightpic}[2]
+{
+\begin{textblock}{7.0}(8.0, 1.5)
+\begin{figure}
+    \centering
+    \includegraphics[width=7.0cm]{../imgs/#1.png}
+    \caption{#2}
+\end{figure}
+\end{textblock}
+}
+
+
+\begin{document}
+
+% make title page
+\begin{frame}
+    \maketitle
+\end{frame}
+
+\begin{frame}[fragile]{SpinQuest Spectrometer Layout}
+
+\begin{tiny}
+
+
+
+\end{tiny}
+
+\end{frame}
+
+\end{document}

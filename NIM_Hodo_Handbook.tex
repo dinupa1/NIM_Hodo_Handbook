@@ -1,6 +1,6 @@
 % author Dinupa Nawarathne
 % email dinupa3@gmail.com
-% date 10-11-2022
+% date 11-18-2022
 
 \documentclass[10pt, xcolor={dvipsnames}, aspectratio = 169, sans,mathserif]{beamer}
 
@@ -15,6 +15,7 @@
 \usepackage{hyperref}
 \usepackage[absolute,overlay]{textpos}
 \usepackage[font=tiny]{caption}
+\usepackage{xcolor,colortbl}
 
 
 %
@@ -23,7 +24,7 @@
 \mode<presentation>
 {
 \usefonttheme{serif}
-\setmainfont{Comic Sans MS}
+\setmainfont{JetBrains Mono}
 % custom colors
 \definecolor{nmsured}{RGB}{137,18,22}
 % custom fonts
@@ -41,6 +42,9 @@
 \usefonttheme{professionalfonts}
 % set background
 \setbeamertemplate{background}[grid][color=nmsured!15]
+
+\graphicspath{ {./imgs/} }
+
 }
 
 %
@@ -53,6 +57,12 @@
 \date{E1039/SpinQuest Experiment
 \\ \today}
 
+\titlegraphic{
+\includegraphics[width=3.0cm]{Fermilab_logo.svg.png}
+\includegraphics[width=1.0cm]{nmsu.png}
+\includegraphics[width=1.5cm]{spinquest_logo.png}
+\includegraphics[width=1.3cm]{Seal_of_the_United_States_Department_of_Energy.svg.png}
+}
 
 %
 % some custom commands
@@ -62,7 +72,7 @@
 \begin{textblock}{7.0}(0.5, 1.5)
 \begin{figure}
     \centering
-    \includegraphics[width=7.0cm]{../imgs/#1.png}
+    \includegraphics[width=7.0cm]{#1}
     \caption{#2}
 \end{figure}
 \end{textblock}
@@ -73,7 +83,7 @@
 \begin{textblock}{7.0}(8.0, 1.5)
 \begin{figure}
     \centering
-    \includegraphics[width=7.0cm]{../imgs/#1.png}
+    \includegraphics[width=7.0cm]{#1}
     \caption{#2}
 \end{figure}
 \end{textblock}
@@ -87,13 +97,206 @@
     \maketitle
 \end{frame}
 
+
+% slide 1
 \begin{frame}[fragile]{SpinQuest Spectrometer Layout}
 
-\begin{tiny}
+\begin{footnotesize}
+\begin{table}
+\begin{center}
+\begin{tabular}{ c c c c c } 
+  & & Beam dump & & \\
+  & & ST1 wire chamber & & \\
+  & & \cellcolor{red!25} H1Y & & \cellcolor{red!25} H1 HV \\
+  & & \cellcolor{red!25} H1X & & \\
+  & & & & \\
+  & & DP1 & \\
+  & & KMag & \\
+\cellcolor{red!25} H2 HV & & & &  \\
+\cellcolor{red!25} NIM H1  (RACK 27) & & ST2 Wire chambers  & & \\
+\cellcolor{red!25} NIM H2 (RR10) & & \cellcolor{red!25} H2Y  & & \\
+ & & \cellcolor{red!25} H2X & & \\
+  & & \cellcolor{red!25} DP2 & & \\
+\cellcolor{red!25} FPGA (RACK 16) & & & & \\
+\cellcolor{red!25} RF coincidence (RR 42) & & ST3 Wire chambers & & \\
+ & & \cellcolor{red!25} H3X & & \\
+\cellcolor{red!25} H3/H4 HV & & Hadron absorber & & \\
+\cellcolor{red!25} NIM H3/H4(RR83) & & PT1 & & \\
+\cellcolor{red!25} NIM H3/H4 (RR43) & & \cellcolor{red!25} H4Y1 && \\
+ & & PT2 & & \\
+ & & \cellcolor{red!25} H4Y2 & & \\
+  & & \cellcolor{red!25} H4X & & 
+\end{tabular}
+\caption{Block diagram of the SpinQuest spectrometer. Pink shaded blocks are in the Hodoscope/NIM sub-system.}
+\end{center}
+\end{table}
+\end{footnotesize}
+
+\end{frame}
+
+\begin{frame}{Debugging Hodoscope/NIM Sub-System}
+
+Some common steps of debugging Hodoscope/NIM sub-system includes;
+
+\begin{itemize}
+
+    \item Check the hodocope hits in online monitor.
+
+    \item Check the raw signal from the hodoscopes.
+
+    \item Check the output signal from the discriminator.
+
+    \item Check the raw NIM signal.
+
+    \item Check the RF gated signal.
+
+\end{itemize}
+
+Order of these steps might change depending on the order of the issue.
+
+\end{frame}
+
+\begin{frame}{Replacing Electronics}
+
+\begin{itemize}
+
+    \item When replacing 4413 discriminators make sure to;
+
+    \begin{itemize}
+
+        \item keep the module threshold at the minimum. Typically this is $\sim$ -15 MV.
+
+        \item adjust the width to $\sim$ 15 - 20 ns. 
+
+    \end{itemize}
+
+    \item When replacing LEMO cables (or any cables) make sure that they are in the same length and they have correct labels in the both ends of the cable.
+
+\end{itemize}
+
+\end{frame}
 
 
+% slide 2
+\begin{frame}{NIM Signal}
 
-\end{tiny}
+\leftpic{signal_1.jpg}{Typical raw signal from the hodoscope paddle.}
+
+\rightpic{signal_2.jpg}{Typical NIM output signal from the LeCroy 4413 discriminator. The threshold of the discriminator set for the minimum value ($\sim$-15mV) and the width is set to $\sim$ 15ns.}
+
+\end{frame}
+
+\begin{frame}{H1 Patch Panels}
+
+\begin{table}
+\begin{center}
+\begin{tabular}{ | c | c | c | c | c | c | c | c | c | c |}
+\hline
+H1T23 & H1T11 & H1B23 & H1B11 & & & H1L20 & H1R20 & H1L10 & H1R 10 \\
+\hline
+H1T22 & H1T10 & H1B22 & H1B10 & & & H1L19 & H1R19 & H1L09 & H1R 09 \\
+\hline
+H1T21 & H1T09 & H1B21 & H1B09 & & & H1L18 & H1R18 & H1L08 & H1R 08 \\
+\hline
+H1T20 & H1T08 & H1B20 & H1B08 & & & H1L17 & H1R17 & H1L07 & H1R 07 \\
+\hline
+H1T19 & H1T07 & H1B19 & H1B07 & & & H1L16 & H1R16 & H1L06 & H1R 06 \\
+\hline
+H1T18 & H1T06 & H1B18 & H1B06 & & & & & &  \\
+\hline
+\end{tabular}
+\caption{Block diagram of the top patch panel.}
+\end{center}
+\end{table}
+
+\begin{table}
+\begin{center}
+\begin{tabular}{ | c | c | c | c | c | c | c | c | c | c |}
+\hline
+H1T17 & H1T05 & H1B17 & H1B05 & & & H1L15 & H1R15 & H1L05 & H1R 05 \\
+\hline
+H1T16 & H1T04 & H1B16 & H1B04 & & & H1L14 & H1R14 & H1L04 & H1R 04 \\
+\hline
+H1T15 & H1T03 & H1B15 & H1B03 & & & H1L13 & H1R13 & H1L03 & H1R 03 \\
+\hline
+H1T14 & H1T02 & H1B14 & H1B02 & & & H1L12 & H1R12 & H1L02 & H1R 02 \\
+\hline
+H1T13 & H1T01 & H1B13 & H1B01 & & & H1L11 & H1R11 & H1L01 & H1R 01 \\
+\hline
+H1T12 & & H1B12 & & & & & & &  \\
+\hline
+\end{tabular}
+\caption{Block diagram of the bottom patch panel.}
+\end{center}
+\end{table}
+
+\end{frame}
+
+\begin{frame}{4413 Pin Numbers}
+
+\begin{table}
+\begin{center}
+\begin{tabular}{ | c | c |}
+\hline
+7 & 8 \\
+\hline
+5 & 6 \\
+\hline
+3 & 4 \\
+\hline
+1 & 2 \\
+\hline
+ & \\
+\hline
+9 & 10 \\
+\hline
+11 & 12 \\
+\hline
+13 & 14 \\
+\hline
+15 & 16 \\
+\hline
+\end{tabular}
+\caption{Pin numbers of the 4413 discriminator.}
+\end{center}
+\end{table}
+
+\end{frame}
+
+\begin{frame}{H1 4413 Discriminator Channel Mapping}
+
+\begin{textblock}{14.0}(0.5, 2.0)
+\begin{table}
+%\begin{center}
+\begin{tabular}{ | c | c | c | c | c | c | c | c | c | c | c | c | c |}
+\hline
+H1XT13 & H1XT12 & & H1XB13 & H1XB12 & & H1XT02 & H1XT01 & & H1YL17 & H1YL16 \\
+\hline
+H1XT15 & H1XT14 & & H1XB15 & H1XB14 & & H1XT04 & H1XT03 & & H1YL19 & H1YL18 \\
+\hline
+H1XT17 & H1XT16 & & H1XB17 & H1XB16 & & H1XT21 & H11XT20 & & H1YL20 & \\
+\hline
+H1XT19 & H1XT18 & & H1XB19 & H1XB18 & & H1XT23 & H1XT22 & & & \\
+\hline
+ & & & & & & & & & & \\
+\hline
+H1XT11 & H1XT10 & & H1XB11 & H1XB10 & & H1XB23 & H1XB22 & & H1YL15 & H1YL14 \\
+\hline
+H1XT09 & H1XT08 & & H1XB09 & H1XB08 & & H1XB21 & H1XB20 & & H1YL13 & H1YL12 \\
+\hline
+H1XT07 & H1XT06 & & H1XB07 & H1XB06 & & H1XB04 & H1XB03 & & H1YL11 & \\
+\hline
+H1XT05 &  &  & H1XB05 & & & H1XB02 & H1XB01 & & & \\
+\hline
+\end{tabular}
+%\caption{Pin numbers of the 4413 discriminator.}
+%\end{center}
+\end{table}
+\end{textblock}
+
+\end{frame}
+
+\begin{frame}{H1 4413 Discriminator Channel Mapping}
 
 \end{frame}
 

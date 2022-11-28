@@ -180,9 +180,33 @@ Order of these steps might change depending on the type of the issue.
 % slide 2
 \begin{frame}{NIM Signal}
 
-\leftpic{signal_1.jpg}{Typical raw signal from the hodoscope paddle.}
+\leftpic{signal_1.jpg}{Typical raw signal from the hodoscope paddle. Time scale 20ns/div. and voltage scale 500mV/div.}
 
-\rightpic{signal_2.jpg}{Typical NIM output signal from the LeCroy 4413 discriminator. The threshold of the discriminator set for the minimum value ($\sim$-15mV) and the width is set to $\sim$ 15ns.}
+\rightpic{signal_2.jpg}{Typical NIM output signal from the LeCroy 4413 discriminator. The threshold of the discriminator set for the minimum value ($\sim$-15mV) and the width is set to $\sim$ 15ns. Time scale 10ns/div. and voltage scale 500mV/div.}
+
+\end{frame}
+
+\begin{frame}[fragile]{Electronics}
+
+\begin{textblock}{14.0}(1.0, 2.0)
+
+Mostly used electronics in the NIM sub-system include.
+
+\begin{itemize}
+
+    \item LeCroy Model 4413: a 16-input discriminator in a single- width CAMAC module. \href{https://hallcweb.jlab.org/experiments/hks/datasheets/4413-spec.htm}{Info.}
+
+    \item LeCroy Model 623B: a low cost eight channel discriminator featuring high-sensitivity, high-speed, updating performance. \href{https://www.fnal.gov/projects/ckm/jlab/623b-spec.htm}{Info.}
+
+    \item LeCroy Model 4416 ECL/NIM/ECL: The Model 4416 is simultaneously an ECL-to-NIM and a NIM-to-ECL converter, specially designed to fill the gap between the new growing ECL circuitry and the old NIM electronics. \href{https://www.fnal.gov/projects/ckm/jlab/4616-spec.htm}{Info.}
+
+    \item LeCroy Model 1440 system: This is the high voltage system for the hodoscopes. \href{https://teledynelecroy.com/lrs/dsheets/dslib.htm}{Info.}
+
+    \item For general infomations about NIM electronics \href{https://teledynelecroy.com/lrs/dsheets/dslib.htm}{link}.
+
+\end{itemize}
+
+\end{textblock}
 
 \end{frame}
 
@@ -234,6 +258,7 @@ H1T12 & & H1B12 & & & & & & &  \\
 
 \begin{frame}{4413 Pin Numbers}
 
+\begin{textblock}{7.0}(0.5, 2.0)
 \begin{table}
 \begin{center}
 \begin{tabular}{ | c | c |}
@@ -260,6 +285,15 @@ H1T12 & & H1B12 & & & & & & &  \\
 \caption{Pin numbers of the 4413 discriminator.}
 \end{center}
 \end{table}
+\end{textblock}
+
+\begin{textblock}{7.0}(8.0, 1.5)
+\begin{figure}
+    \centering
+    \includegraphics[height=7.0cm]{4413.jpg}
+    \caption{A 4413 discriminator pins.}
+\end{figure}
+\end{textblock}
 
 \end{frame}
 
@@ -267,37 +301,383 @@ H1T12 & & H1B12 & & & & & & &  \\
 
 \begin{textblock}{14.0}(0.5, 2.0)
 \begin{table}
-%\begin{center}
-\begin{tabular}{ | c | c | c | c | c | c | c | c | c | c | c | c | c |}
+\begin{center}
+\begin{tabular}{ 
+                |>{\columncolor{blue!20}} c
+                >{\columncolor{blue!20}} c
+                |>{\columncolor{red!20}} c
+                >{\columncolor{red!20}} c
+                |>{\columncolor{green!20}} c
+                >{\columncolor{green!20}}c |
+                }
 \hline
-H1XT13 & H1XT12 & & H1XB13 & H1XB12 & & H1XT02 & H1XT01 & & H1YL17 & H1YL16 \\
-\hline
-H1XT15 & H1XT14 & & H1XB15 & H1XB14 & & H1XT04 & H1XT03 & & H1YL19 & H1YL18 \\
-\hline
-H1XT17 & H1XT16 & & H1XB17 & H1XB16 & & H1XT21 & H11XT20 & & H1YL20 & \\
-\hline
-H1XT19 & H1XT18 & & H1XB19 & H1XB18 & & H1XT23 & H1XT22 & & & \\
-\hline
- & & & & & & & & & & \\
-\hline
-H1XT11 & H1XT10 & & H1XB11 & H1XB10 & & H1XB23 & H1XB22 & & H1YL15 & H1YL14 \\
-\hline
-H1XT09 & H1XT08 & & H1XB09 & H1XB08 & & H1XB21 & H1XB20 & & H1YL13 & H1YL12 \\
-\hline
-H1XT07 & H1XT06 & & H1XB07 & H1XB06 & & H1XB04 & H1XB03 & & H1YL11 & \\
-\hline
-H1XT05 &  &  & H1XB05 & & & H1XB02 & H1XB01 & & & \\
+H1XT13 & H1XT12 & H1XB13 & H1XB12 & H1XT02 & H1XT01 \\
+H1XT15 & H1XT14 & H1XB15 & H1XB14 & H1XT04 & H1XT03 \\
+H1XT17 & H1XT16 & H1XB17 & H1XB16 & H1XT21 & H11XT20 \\
+H1XT19 & H1XT18 & H1XB19 & H1XB18 & H1XT23 & H1XT22  \\
+ & & & & &  \\
+H1XT11 & H1XT10 & H1XB11 & H1XB10 & H1XB23 & H1XB22 \\
+H1XT09 & H1XT08 & H1XB09 & H1XB08 & H1XB21 & H1XB20 \\
+H1XT07 & H1XT06 & H1XB07 & H1XB06 & H1XB04 & H1XB03 \\
+H1XT05 &  &   H1XB05 & &  H1XB02 & H1XB01 \\
 \hline
 \end{tabular}
-%\caption{Pin numbers of the 4413 discriminator.}
-%\end{center}
+\caption{H1X channel mapping to discriminators. This is the layout of the left most 3 4413 16 channel discriminators in the NIM bin. Each color represent one discriminator.}
+\end{center}
 \end{table}
 \end{textblock}
 
 \end{frame}
 
 \begin{frame}{H1 4413 Discriminator Channel Mapping}
- 
+
+\begin{table}
+\begin{center}
+\begin{tabular}{
+    |>{\columncolor{blue!20}} c
+    >{\columncolor{blue!20}} c
+    |>{\columncolor{red!20}} c
+    >{\columncolor{red!20}} c
+    |>{\columncolor{green!20}} c
+    >{\columncolor{green!20}} c
+    |>{\columncolor{orange!20}} c
+    >{\columncolor{orange!20}} c|
+}
+\hline
+H1YL17 & H1YL16 & H1YR17 & H1YR16 & H1YL07 & H1YL06 & H1YR07 & H1YR06 \\
+H1YL19 & H1YL18 & H1YR19 & H1YR18 & H1YL09 & H1YL08 & H1YR09 & H1YR08 \\
+H1YL20 &        &        & H1YR20 &        & H1YL10 &        & H1YR10 \\
+       &        &        &        &        &        &        &        \\
+       &        &        &        &        &        &        &        \\
+H1YL15 & H1YL14 & H1YR15 & H1YR14 & H1YL05 & H1YL04 & H1YR05 & H1YR04 \\
+H1YL13 & H1YL12 & H1YR13 & H1YR12 & H1YL03 & H1YL02 & H1YR03 & H1YR02 \\
+H1YL11 &        & H1YR11 &        & H1YL01 &        & H1YR02 &        \\
+       &        &        &        &        &        &        &        \\
+\hline
+\end{tabular}
+\caption{H1Y channel mapping to discriminators. This is the layout of the right most 4 4413 16 channel discriminators in the NIM bin. Each color represent one discriminator.}
+\end{center}
+\end{table}
+
+\end{frame}
+
+\begin{frame}{H2 Patch Panel Layout}
+\begin{table}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+H2L19 & H2R19 & H2L09 & H2T16 & H2B16 \\
+\hline
+H2L18 & H2R18 & H2L08 & H2T15 & H2B15 \\
+\hline
+H2L17 & H2R17 & H2L07 & H2T14 & H2B14 \\
+\hline
+H2L16 & H2R16 & H2L06 & H2T13 & H2B13 \\
+\hline
+H2L15 & H2R15 & H2L05 & H2T12 & H2B12 \\
+\hline
+      & H2R09 & H2R06 & H2T11 & H2B11 \\
+\hline
+      & H2R08 & H2R05 & H2T10 & H2B10 \\
+\hline
+      & H2R07 &       & H2T09 & H2B09 \\
+\hline
+\end{tabular}
+\caption{H2 top patch panel. This is located in rack RR10.}
+\end{center}
+\end{table}
+
+\begin{tiny}
+\begin{table}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+H2L14 & H2L11 & H2R13 & H2L04 & H2L02 & H2R04 & H2R02 & H2T08 & H2T06 & H2T04 & H2T02 & H2B08 & H2B06 & H2B04 & H2B02 \\
+\hline
+H2L13 & H2L10 & H2R12 & H2L03 & H2L01 & H2R03 & H2R01 & H2T07 & H2T05 & H2T03 & H2T01 & H2B07 & H2B05 & H2B03 & H2B01 \\
+\hline
+H2L12 & H2R14 & H2R11 & H2R10 &       &       &       &       &       &       &       &       &       &       &       \\
+\hline
+\end{tabular}
+\caption{H2 bottom patch panel. This is located in rack RR10.}
+\end{center}
+\end{table}
+\end{tiny}
+
+\end{frame}
+
+\begin{frame}{H2 Amplifier}
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+\hline
+H2L19 & H2L18 & H2L17 & H2L09 & H2L08 & H2B16 & H2B15 & H2B15 & H2B14 \\
+\hline
+H2L16 & H2L15 & H2R19 & H2L06 & H2L05 & H2B13 & H2B12 & H2B12 & H2B11 \\
+\hline
+H2R18 & H2R17 & H2R16 & H2R08 & H2R07 & H2B10 & H2B09 & H2B09 & H2T12 \\
+\hline
+H2R15 & H2T16 & H2T15 & H2R05 & H2T14 & H2T13 & H2T11 & H2T10 & H2T09 \\
+\hline
+\end{tabular}
+\caption{H2 top amplifiers. This is located in rack RR10.}
+\end{center}
+\end{table}
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+\hline
+H2L14 & H2L13 & H2L12 & H2L04 & H2L03 & BAD   & H2T04 & H2T03 & H2T02 \\
+\hline
+H2L11 & H2L10 & H2L02 & H2L01 & H2R04 & H2R03 & H2T01 & H2B08 & H2B07 \\
+\hline
+BAD   & H2R13 & H2R12 & H2R02 & H2R01 & H2T08 & H2B06 & H2B05 & H2B04 \\
+\hline
+H2R11 & H2R10 & H2R14 & H2T07 & H2T07 & H2T05 & H2B03 & H2B02 & H2B01 \\
+\hline
+\end{tabular}
+\caption{H2 bottom amplifiers. This is located in rack RR10.}
+\end{center}
+\end{table}
+
+\end{frame}
+
+\begin{frame}{H2 4413 Discriminator Mapping}
+
+\begin{textblock}{14.0}(0.5, 2.0)
+\begin{table}
+\begin{center}
+\begin{tabular}{
+    |>{\columncolor{lime!20}}c
+    >{\columncolor{lime!20}}c
+    |>{\columncolor{blue!20}}c
+    >{\columncolor{blue!20}}c
+    |>{\columncolor{green!20}}c
+    >{\columncolor{green!20}}c
+    |>{\columncolor{red!20}}c
+    >{\columncolor{red!20}}c
+    |>{\columncolor{orange!20}}c
+    >{\columncolor{orange!20}}c|
+}
+\hline
+H2L16 & H2L15 & H2R16 & H2R15 & H2L06 & H2L05 & H2T19 & H2T09 & H2B10 & H2B09 \\
+H2L18 & H2L17 & H2R18 & H2R17 & H2L08 & H2L07 & H2T12 & H2T11 & H2B12 & H2B11 \\
+      & H2L19 &       & H2R19 &       & H2L09 & H2T14 & H2T13 & H2B14 & H2B13 \\
+      &       &       &       &       &       & H2T16 & H2T15 & H2B16 & H2B15 \\
+      &       &       &       &       &       &       &       &       &       \\
+      &       &       &       &       &       &       &       &       &       \\
+H2L14 & H2L13 & H2R14 & H2R13 & H2L04 & H2R03 & H2T08 & H2T07 & H2B08 & H2B07 \\
+H2L12 & H2L11 & H2R12 & H2R11 & H2L02 & H2R01 & H2T06 & H2T05 & H2B06 & H2B05 \\
+H2L10 &       & H2R10 &       &       &       & H2T04 & H2T03 & H2B04 & H2B03 \\
+      &       &       &       &       &       & H2T02 & H2T01 & H2B02 & H2B01 \\
+\hline
+\end{tabular}
+\caption{H1Y channel mapping to discriminators. Each color represent one discriminator. This is located at RR10 rack.}
+\end{center}
+\end{table}
+\end{textblock}
+\end{frame}
+
+\begin{frame}{NIM Trigger Mapping}
+
+\begin{textblock}{7.0}(0.5, 2.0)
+\begin{table}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\rowcolor{red!20}
+CHR01 & H1XT & OUT \\
+\rowcolor{red!20}
+CHR02 & H1XB & OUT \\
+\rowcolor{red!20}
+CHR03 & H1YB & OUT \\
+\rowcolor{red!20}
+CHR04 & H1YT & OUT \\
+\rowcolor{red!20}
+CHR05 & H2XT & OUT \\
+\rowcolor{red!20}
+CHR06 & H2XB & OUT \\
+\rowcolor{red!20}
+CHR07 & H2YB & OUT \\
+\rowcolor{red!20}
+CHR08 & H2YT & OUT \\
+\rowcolor{red!20}
+CHR09 & H3XT & OUT \\
+\rowcolor{red!20}
+CHR10 & H3XB & OUT \\
+\rowcolor{red!20}
+CHR11 & H4XT & OUT \\
+\rowcolor{red!20}
+CHR12 & H4XB & OUT \\
+\rowcolor{red!20}
+CHR13 & H4Y1B & OUT \\
+\rowcolor{red!20}
+CHR14 & H4Y1T & OUT \\
+\rowcolor{red!20}
+CHR15 & H4Y2B & OUT \\
+\rowcolor{red!20}
+CHR16 & H2Y2T & OUT \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+\end{textblock}
+
+\begin{textblock}{7.0}(8.0, 2.0)
+\begin{table}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+CHR17 &       &     \\
+CHR18 &       &     \\
+CHR19 &       &     \\
+CHR20 &       &     \\
+\rowcolor{lime!20}
+CHR21 & NIM1 & IN \\
+\rowcolor{lime!20}
+CHR22 & NIM2 & IN \\
+\rowcolor{lime!20}
+CHR23 & NIM4 & IN \\
+\rowcolor{lime!20}
+CHR24 & MATRIX & IN \\
+\hline
+\end{tabular}
+\caption{NIM trigger channel mapping. This is located at RR42 rack.}
+\end{center}
+\end{table}
+\end{textblock}
+
+\end{frame}
+
+\begin{frame}{H4 4413 Discriminator Channel Mapping}
+
+\begin{textblock}{7.0}(0.5, 2.0)
+\begin{table}
+\begin{center}
+\begin{tabular}{
+    |>{\columncolor{lime!20}}c
+    |>{\columncolor{blue!20}}c
+    |>{\columncolor{red!20}}c|
+}
+\hline
+CHANNEL & ELEMENT & ELEMENT \\
+\hline
+8 & 1 & 9 \\
+7 & 2 & 10 \\
+6 & 3 & 11 \\
+5 & 4 & 12 \\
+4 & 5 & 13 \\
+3 & 6 & 14 \\
+2 & 7 & 15 \\
+1 & 8 & 16 \\
+\hline
+\end{tabular}
+\caption{H4 up PMT channel mapping to 4413 discriminators. Each color represent one discriminator. This is located at RR83 rack.}
+\end{center}
+\end{table}
+\end{textblock}
+
+\begin{textblock}{7.0}(8.0, 2.0)
+\begin{table}
+\begin{center}
+\begin{tabular}{
+    |>{\columncolor{lime!20}}c
+    |>{\columncolor{blue!20}}c
+    |>{\columncolor{red!20}}c|
+}
+\hline
+CHANNEL & ELEMENT & ELEMENT \\
+\hline
+16 & 1 & 9 \\
+15 & 2 & 10 \\
+14 & 3 & 11 \\
+13 & 4 & 12 \\
+12 & 5 & 13 \\
+11 & 6 & 14 \\
+10 & 7 & 15 \\
+9  & 8 & 16 \\
+\hline
+\end{tabular}
+\caption{H4 up PMT channel mapping to 4413 discriminators. Each color represent one discriminator. This is located at RR83 rack.}
+\end{center}
+\end{table}
+\end{textblock}
+
+\end{frame}
+
+\begin{frame}[fragile]{NIM Triggers}
+
+\begin{itemize}
+    \item Four NIM triggers were used with cosmic rays;
+\end{itemize}
+
+\begin{verbatim}
+NIM1: (H1X||H1Y)&&(H2X||H2Y)&&(H3X||H4Y1)&&(H4X||H4Y2)
+NIM2: (H1X||H1Y)&&(H2X||H2Y)
+NIM3: Random
+NIM4: (H2X||H2Y)&&(H4X||H4Y2)
+FPGA5: ((H1X||H1Y)&&(H2X||H2Y)) || ((H2X||H2Y)&&(H4X||H4Y2)) // Made
+with NIM modules. Time adjustment is reversed beamlike. RF timing is
+not included.
+\end{verbatim}
+
+\begin{itemize}
+    \item Four fold NIM trigger will use in the beam time;
+\end{itemize}
+
+\begin{verbatim}
+TRIGGER: H1X && H2X && H3X && H4X
+\end{verbatim}
+
+\end{frame}
+
+\begin{frame}{RF Timed Trigger}
+
+\begin{textblock}{14.0}(0.5, 1.5)
+\begin{figure}
+    \centering
+    \includegraphics[width=13.0cm]{RF_Timed_NIM_trigger.png}
+    \caption{RF timed NIM trigger (Thanks to S. Pate).}
+\end{figure}
+\end{textblock}
+
+\end{frame}
+
+\begin{frame}[fragile]{Hodoscope Voltage Debugging}
+
+\begin{itemize}
+
+    \item Navigate to settings folder use the following commands;
+
+    \begin{verbatim}
+    kinit user@FNAL.GOV
+    ssh -X user@spinquestgpvm01.fnal.gov
+    cd /data2/e1039/daq/slowcontrols/lecroy/hv/
+    \end{verbatim}
+
+    \item Use the following commands for basic debugging;
+
+    \begin{verbatim}
+    ./status plane # check status of plane
+    ./on plane # turn on the hodoscope plane
+    ./off plane # turn off the hodoscope plane
+    ./monitor plane # check the status of the plane
+    ./reset_netrs232.sh -y plane # reset the connection
+    \end{verbatim}
+
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Updating this Notebook}
+
+\begin{itemize}
+
+    \item You can update the notebook my making a pull request to the git \href{https://github.com/dinupa1/NIM_Hodo_Handbook}{repository}.
+
+\end{itemize}
 
 \end{frame}
 

@@ -480,7 +480,7 @@ H2L10 &       & H2R10 &       &       &       & H2T04 & H2T03 & H2B04 & H2B03 \\
 \end{textblock}
 \end{frame}
 
-\begin{frame}{NIM Trigger Mapping}
+\begin{frame}{NIM Trigger Mapping in the Patch Panel}
 
 \begin{textblock}{7.0}(0.5, 2.0)
 \begin{table}
@@ -544,7 +544,7 @@ CHR23 & NIM4 & IN \\
 CHR24 & MATRIX & IN \\
 \hline
 \end{tabular}
-\caption{NIM trigger channel mapping. This is located at RR42 rack.}
+\caption{NIM trigger channel mapping in the patch panel. This is located at RR42 rack.}
 \end{center}
 \end{table}
 \end{textblock}
@@ -553,54 +553,69 @@ CHR24 & MATRIX & IN \\
 
 \begin{frame}{H3/4 4413 Discriminator Channel Mapping}
 
-\begin{textblock}{7.0}(0.5, 2.0)
+\begin{textblock}{7.0}(0.5, 1.0)
 \begin{table}
 \begin{center}
 \begin{tabular}{
     |>{\columncolor{lime!20}}c
-    |>{\columncolor{blue!20}}c
-    |>{\columncolor{red!20}}c|
+    |>{\columncolor{blue!20}}c|
 }
 \hline
-CHANNEL & ELEMENT & ELEMENT \\
+CHANNEL & ELEMENT \\
 \hline
-8 & 1 & 9 \\
-7 & 2 & 10 \\
-6 & 3 & 11 \\
-5 & 4 & 12 \\
-4 & 5 & 13 \\
-3 & 6 & 14 \\
-2 & 7 & 15 \\
-1 & 8 & 16 \\
+8 & UP PMT 1 LEFT/RIGHT \\
+7 & UP PMT 2 LEFT/RIGHT \\
+6 & UP PMT 3 LEFT/RIGHT \\
+5 & UP PMT 4 LEFT/RIGHT \\
+4 & UP PMT 5 LEFT/RIGHT \\
+3 & UP PMT 6 LEFT/RIGHT \\
+2 & UP PMT 7 LEFT/RIGHT \\
+1 & UP PMT 8 LEFT/RIGHT \\
+  &                     \\
+16 & DOWN PMT 1 LEFT/RIGHT \\
+15 & DOWN PMT 2 LEFT/RIGHT \\
+14 & DOWN PMT 3 LEFT/RIGHT \\
+13 & DOWN PMT 4 LEFT/RIGHT \\
+12 & DOWN PMT 5 LEFT/RIGHT \\
+11 & DOWN PMT 6 LEFT/RIGHT \\
+10 & DOWN PMT 7 LEFT/RIGHT \\
+9  & DOWN PMT 8 LEFT/RIGHT \\
 \hline
 \end{tabular}
-\caption{H4 up PMT channel mapping to 4413 discriminators. Each color represent one discriminator. This is located at RR83 rack.}
 \end{center}
 \end{table}
 \end{textblock}
 
-\begin{textblock}{7.0}(8.0, 2.0)
+\begin{textblock}{7.0}(8.0, 1.0)
 \begin{table}
 \begin{center}
 \begin{tabular}{
     |>{\columncolor{lime!20}}c
-    |>{\columncolor{blue!20}}c
-    |>{\columncolor{red!20}}c|
+    |>{\columncolor{blue!20}}c|
 }
 \hline
-CHANNEL & ELEMENT & ELEMENT \\
+CHANNEL & ELEMENT \\
 \hline
-16 & 1 & 9 \\
-15 & 2 & 10 \\
-14 & 3 & 11 \\
-13 & 4 & 12 \\
-12 & 5 & 13 \\
-11 & 6 & 14 \\
-10 & 7 & 15 \\
-9  & 8 & 16 \\
+8 & UP PMT 9 LEFT/RIGHT \\
+7 & UP PMT 10 LEFT/RIGHT \\
+6 & UP PMT 11 LEFT/RIGHT \\
+5 & UP PMT 12 LEFT/RIGHT \\
+4 & UP PMT 13 LEFT/RIGHT \\
+3 & UP PMT 14 LEFT/RIGHT \\
+2 & UP PMT 15 LEFT/RIGHT \\
+1 & UP PMT 16 LEFT/RIGHT \\
+  &                     \\
+16 & DOWN PMT 9 LEFT/RIGHT \\
+15 & DOWN PMT 10 LEFT/RIGHT \\
+14 & DOWN PMT 11 LEFT/RIGHT \\
+13 & DOWN PMT 12 LEFT/RIGHT \\
+12 & DOWN PMT 13 LEFT/RIGHT \\
+11 & DOWN PMT 14 LEFT/RIGHT \\
+10 & DOWN PMT 15 LEFT/RIGHT \\
+9  & DOWN PMT 16 LEFT/RIGHT \\
 \hline
 \end{tabular}
-\caption{H4 up PMT channel mapping to 4413 discriminators. Each color represent one discriminator. This is located at RR83 rack.}
+\caption{Channel mapping in the two near by 4413 discriminators.}
 \end{center}
 \end{table}
 \end{textblock}
@@ -624,7 +639,10 @@ not included.
 \end{verbatim}
 
 \begin{itemize}
-    \item Four fold NIM trigger will use in the beam time;
+
+    \item We will use \verb|NIM1| trigger to optimize the hodoscope efficiencies.
+
+    \item Four fold NIM trigger will use in the beam time for physics data;
 \end{itemize}
 
 \begin{verbatim}
@@ -653,7 +671,7 @@ TRIGGER: H1X && H2X && H3X && H4X
 
     \begin{verbatim}
     kinit user@FNAL.GOV
-    ssh -X user@spinquestgpvm01.fnal.gov
+    ssh -X user@spinquestgat1.fnal.gov
     cd /data2/e1039/daq/slowcontrols/lecroy/hv/
     \end{verbatim}
 
